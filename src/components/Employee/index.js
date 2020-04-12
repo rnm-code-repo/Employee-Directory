@@ -96,7 +96,7 @@ class Employee extends Component {
             {
               [...this.state.empList].sort(sortTypes[currentSort].fn).map(data => (
                 <tr>
-                  <td><img src={data.picture.thumbnail} /></td>
+                  <td><img src={data.picture.thumbnail} alt={data.name.first}/></td>
                   <td>{data.name.title}. {data.name.first}, {data.name.last}</td>
                   <td>{data.phone}</td>
                   <td>{data.email}</td>

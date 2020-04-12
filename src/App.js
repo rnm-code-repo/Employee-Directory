@@ -1,8 +1,6 @@
 import React from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
-//import Search from "./pages/Search";
+import { BrowserRouter as Router } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import Search from "./components/Search";
 import Employee from "./components/Employee"
 import Footer from "./components/Footer";
 import Wrapper from "./components/Wrapper";

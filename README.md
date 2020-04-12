@@ -1,5 +1,6 @@
 # Employee-Directory
 React project to show employee data with `sort` and `search` option
+[Checkout the applicaiton in action](https://rnm-code-repo.github.io/Employee-Directory/)
 - - -
 This React JS application
 
