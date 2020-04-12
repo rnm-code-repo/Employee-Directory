@@ -1,0 +1,11 @@
+nav.navbar.navbar-default {
+  margin-bottom: 0;
+}
+
+.empNav {
+  justify-content: center; 
+  background-color: #172367;
+  border-bottom: red;
+  border-bottom-width: thick;
+  border-bottom-style: solid;
+}
