@@ -28,55 +28,36 @@ class Employee extends Component {
   }
 
   onSortChange = () => {
-		const { currentSort } = this.state;
-		let nextSort;
+    const { currentSort } = this.state;
+    let nextSort;
 
-		if (currentSort === 'down') nextSort = 'up';
-		else if (currentSort === 'up') nextSort = 'default';
-		else if (currentSort === 'default') nextSort = 'down';
+    if (currentSort === 'down') nextSort = 'up';
+    else if (currentSort === 'up') nextSort = 'default';
+    else if (currentSort === 'default') nextSort = 'down';
 
-		this.setState({
-			currentSort: nextSort
-		});
+    this.setState({
+      currentSort: nextSort
+    });
   };
-  
+
 
   handleInputChange = event => {
     this.setState({ searchInput: event.target.value });
-    
+
     let filterList = this.state.empData.filter(person => {
       //console.log(person.name.first)
-      return person.name.first.includes(event.target.value) 
-          || person.name.last.includes(event.target.value)
-          || person.email.includes(event.target.value)
-          || person.phone.includes(event.target.value)
-          || person.dob.date.includes(event.target.value)
+      return person.name.first.includes(event.target.value)
+        || person.name.last.includes(event.target.value)
+        || person.email.includes(event.target.value)
+        || person.phone.includes(event.target.value)
+        || person.dob.date.includes(event.target.value)
     });
     const empList = filterList;
     this.setState({ empList });
   }
-  
-  /*(event) => {
-    if (event.target.value.length > 0) {
-      console.log(event.target.value);
-      let array = this.state.empData.filter(person => {
-        console.log(person.name.first)
-        return person.name.first.toUpperCase().includes(event.target.value.toUpperCase()) 
-            || person.name.last.toUpperCase().includes(event.target.value.toUpperCase())
-            || person.email.toUpperCase().includes(event.target.value.toUpperCase())
-            || person.phone.includes(event.target.value)
-      });
-      const empData = array;
-      this.setState({ empData });
-    } else {
-      const empData = this.state.empData
-      this.setState({ empData });
-    }
-  }*/
 
   render() {
     const { currentSort } = this.state;
-    //let {empData, searchInput}  = this.state;
     const sortTypes = {
       up: {
         class: 'sort-up',
@@ -91,19 +72,19 @@ class Employee extends Component {
         fn: (a, b) => a
       }
     };
-    
+
     return (
 
       <div>
-        
-        <Search value={this.state.searchInput} handleInputChange={this.handleInputChange}/>
-        <Table striped bordered hover variant="light" style={{maxWidth: "90%", margin: "auto", textAlign: "center"}}>
+
+        <Search value={this.state.searchInput} handleInputChange={this.handleInputChange} />
+        <Table striped bordered hover variant="light" style={{ maxWidth: "90%", margin: "auto", textAlign: "center" }}>
           <thead>
             <tr>
               <th>Image</th>
-              <th>Name <button onClick={this.onSortChange} style={{border: "none"}}>
-                        <FontAwesomeIcon icon={this.state.currentSort === "default" ? faSort : this.state.currentSort === "up" ? faSortUp : faSortDown }/>
-                      </button>
+              <th>Name <button onClick={this.onSortChange} style={{ border: "none" }}>
+                <FontAwesomeIcon icon={this.state.currentSort === "default" ? faSort : this.state.currentSort === "up" ? faSortUp : faSortDown} />
+              </button>
               </th>
               <th>Phone</th>
               <th>Email</th>
@@ -113,10 +94,9 @@ class Employee extends Component {
           <tbody>
 
             {
-              //this.state.empData.map(data => (
-                [...this.state.empList].sort(sortTypes[currentSort].fn).map(data => (
+              [...this.state.empList].sort(sortTypes[currentSort].fn).map(data => (
                 <tr>
-                  <td><img src={data.picture.thumbnail}/></td>
+                  <td><img src={data.picture.thumbnail} /></td>
                   <td>{data.name.title}. {data.name.first}, {data.name.last}</td>
                   <td>{data.phone}</td>
                   <td>{data.email}</td>
